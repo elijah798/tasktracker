@@ -45,8 +45,23 @@
   font-size: 4rem;
 }
 
+.subtitle {
+  margin: 0;
+  line-height: 1.15;
+  font-size: 3rem;
+
+}
+
+.active {
+  margin: 0 10px;
+  line-height: 1.15;
+  font-size: 3rem;
+  text-decoration: line-through #0070f3;
+}
+
 .title,
-.description {
+.description,
+.subtitle {
   text-align: center;
 }
 
@@ -65,12 +80,26 @@
     Bitstream Vera Sans Mono, Courier New, monospace;
 }
 
+.LoginButton{
+  background-color: #0070f3; /* Green */
+  border: none;
+  color: white;
+  padding: 15px 32px;
+  text-align: center;
+  text-decoration: none;
+  display: inline-block;
+  font-size: 16px;
+  margin: 4px 2px;
+  cursor: pointer;
+  border-radius: 10px;
+}
+
 .grid {
   display: flex;
   align-items: center;
   justify-content: center;
   flex-wrap: wrap;
-  max-width: 800px;
+  max-width: 1000px;
 }
 
 .card {
@@ -95,12 +124,14 @@
 .card h2 {
   margin: 0 0 1rem 0;
   font-size: 1.5rem;
+  overflow-wrap: break-word;
 }
 
 .card p {
   margin: 0;
   font-size: 1.25rem;
   line-height: 1.5;
+  overflow-wrap:break-word;
 }
 
 .logo {
@@ -108,7 +139,7 @@
   margin-left: 0.5rem;
 }
 
-@media (max-width: 600px) {
+@media (max-width: 900px) {
   .grid {
     width: 100%;
     flex-direction: column;

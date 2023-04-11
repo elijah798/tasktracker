@@ -1,0 +1,7 @@
+{
+  "databaseURL": "https://Elijah-Sellers-s-workspace-d25an5.us-east-1.xata.sh/db/ProjectTracker",
+  "codegen": {
+    "output": "src/xata.js",
+    "moduleType": "esm"
+  }
+}
