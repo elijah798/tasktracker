@@ -55,7 +55,7 @@ export default function task({task}){
                 },
                 body: JSON.stringify(task)
             })
-            console.log("Updated Task: ", task.id )
+
 
 
 }
