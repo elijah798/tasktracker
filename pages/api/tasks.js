@@ -16,7 +16,6 @@ export default async function handler(req, res) {
             console.log(req.body)
             
             const updatedTask = await xata.db.tasks.update(req.body.id, req.body);
-            console.log("Updated Task: ", req.body.status )
             res.status(200).json(req.body);
             break;
         default:
