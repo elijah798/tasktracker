@@ -61,7 +61,7 @@ export default function Dashboard({tasks}){
                                     <Link key={task.id} href={`/task/${task.id}`}>
                                     <h2>{task.Description}</h2>
                                     <p>Due Date: {task.DueDate}</p>
-                                    <p>Severity: {task.Severity}</p>
+                                    <p>Severity: {task.Priority}</p>
                                     <p>Status: {task.Status}</p>
                                     </Link>
                                 </div>

@@ -28,7 +28,9 @@
   flex-grow: 1;
 }
 
-.title a {
+.title a,
+.subtitle a,
+.bluetext {
   color: #0070f3;
   text-decoration: none;
 }
@@ -78,6 +80,25 @@
   font-size: 1.1rem;
   font-family: Menlo, Monaco, Lucida Console, Liberation Mono, DejaVu Sans Mono,
     Bitstream Vera Sans Mono, Courier New, monospace;
+}
+
+.links {
+  display: flex;
+  justify-content: left;
+  align-items: center;
+  flex-wrap: wrap;
+  max-width: 400px;
+  margin-top: 3rem;
+}
+
+.selectGroup {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  align-items: center;
+  flex-wrap: wrap;
+  max-width: 300px;
+
 }
 
 .LoginButton{
