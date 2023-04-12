@@ -1,6 +1,7 @@
 import styles from '../styles/Home.module.css'
 import { useState } from 'react';
 import { getXataClient } from '../src/xata'
+import Link from 'next/link';
 
 const xata = getXataClient();
 
@@ -8,7 +9,7 @@ export async function getServerSideProps(context) {
     const tasks = await xata.db.tasks.getAll();
     return {
         props: {
-            //serialise the data to JSON
+            
             tasks: JSON.parse(JSON.stringify(tasks))
         }
     }
@@ -55,12 +56,17 @@ export default function Dashboard({tasks}){
                     {
                         tasks.map((task) => {
                             return (
+
                                 <div className={styles.card} key={task.id}>
+                                    <Link key={task.id} href={`/task/${task.id}`}>
                                     <h2>{task.Description}</h2>
                                     <p>Due Date: {task.DueDate}</p>
                                     <p>Severity: {task.Severity}</p>
                                     <p>Status: {task.Status}</p>
+                                    </Link>
                                 </div>
+
+
                             )
                         }
                         )
