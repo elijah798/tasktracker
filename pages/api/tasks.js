@@ -19,8 +19,8 @@ export default async function handler(req, res) {
             break;
         case "DELETE":
             console.log("Deleting Task")
-            const deletedTask = await xata.db.tasks.delete(req.body.id);
-            res.status(200).json(req.body);
+            //const deletedTask = await xata.db.tasks.delete(req.body.id);
+            res.redirect(200,"/dashboard");
             break;
         default:
             res.status(405).end();

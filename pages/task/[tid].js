@@ -1,12 +1,14 @@
 /* eslint-disable react-hooks/rules-of-hooks */
-import Router, { useRouter } from 'next/router'
+import {useRouter} from 'next/router';
 import { useState } from 'react';
 import styles from '../../styles/Home.module.css'
 import { getXataClient } from '../../src/xata'
 import Link from 'next/link';
 import Button from 'react-bootstrap/Button'
 
+
 const xata = getXataClient();
+
 
 
 
@@ -32,6 +34,8 @@ export const getServerSideProps = async (context) => {
 
 
 export default function task({task}){
+
+    const router = useRouter();
 
     const [active, setActive] = useState(true);
     const [button, setButton] = useState("Edit");
@@ -59,7 +63,8 @@ export default function task({task}){
             body: JSON.stringify(task)
         })
 
-        useRouter.redirect('/Dashboard');
+        router.push('/Dashboard/')
+
     }
 
 
