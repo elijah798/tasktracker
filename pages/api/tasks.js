@@ -13,9 +13,13 @@ export default async function handler(req, res) {
             break;
 
         case "PUT":
-            console.log(req.body)
-            
+            console.log("Updating Task")           
             const updatedTask = await xata.db.tasks.update(req.body.id, req.body);
+            res.status(200).json(req.body);
+            break;
+        case "DELETE":
+            console.log("Deleting Task")
+            const deletedTask = await xata.db.tasks.delete(req.body.id);
             res.status(200).json(req.body);
             break;
         default:

@@ -1,5 +1,5 @@
 /* eslint-disable react-hooks/rules-of-hooks */
-import { useRouter } from 'next/router'
+import Router, { useRouter } from 'next/router'
 import { useState } from 'react';
 import styles from '../../styles/Home.module.css'
 import { getXataClient } from '../../src/xata'
@@ -34,27 +34,54 @@ export const getServerSideProps = async (context) => {
 export default function task({task}){
 
     const [active, setActive] = useState(true);
+    const [button, setButton] = useState("Edit");
 
 
 
     const handleEdit = () => {
         setActive(!active)
+        if(active){
+            setButton("Cancel")
+        }else{
+            setButton("Edit")
+        }
+
     }
 
-    const handleSave = () => {
-        setActive(!active)
+    const handleDelete = () => {
+        console.log("Deleting")
 
-        task.Status = document.getElementById("statusSelect").value;
-        task.Priority = document.getElementById("prioritySelect").value;
-        console.log("HELLLOOO")
+        fetch(`http://localhost:3000/api/tasks`, {
+            method: 'DELETE',
+            headers: {
+                'Content-Type': 'application/json'
+            },
+            body: JSON.stringify(task)
+        })
+
+        useRouter.redirect('/Dashboard');
+    }
+
+
+    const handleSave = () => {
+        if(!active){
+            console.log("saving")
+            setActive(!active)
+            task.Status = document.getElementById("statusSelect").value;
+            task.Priority = document.getElementById("prioritySelect").value;
     
-            fetch(`http://localhost:3000/api/tasks`, {
-                method: 'PUT',
-                headers: {
-                    'Content-Type': 'application/json'
-                },
-                body: JSON.stringify(task)
-            })
+        
+                fetch(`http://localhost:3000/api/tasks`, {
+                    method: 'PUT',
+                    headers: {
+                        'Content-Type': 'application/json'
+                    },
+                    body: JSON.stringify(task)
+                })
+    
+        }
+        console.log("After saving")
+
 
 
 
@@ -76,8 +103,7 @@ export default function task({task}){
                 <h1>Due Date: {date}</h1>
                 <div className={styles.selectGroup}>
                     <h1>Status:</h1>
-                    <select id="statusSelect" disabled={active}>
-                        <option value={`${task.Status}`}>{task.Status}</option>
+                    <select id="statusSelect" disabled={active}  defaultValue={task.Status}>
                         <option value="Not Started">Not Started</option>
                         <option value="In Progress">In Progress</option>
                         <option value="Completed">Completed</option>
@@ -87,7 +113,6 @@ export default function task({task}){
                 <div className={styles.selectGroup}>
                     <h1>Priority:</h1>
                     <select id="prioritySelect" disabled={active} defaultValue={task.Priority}>
-                        <option value={`${task.Priority}`}>{task.Priority}</option>
                         <option value="High">High</option>
                         <option value="Medium">Medium</option>
                         <option value="Low">Low</option>
@@ -96,9 +121,9 @@ export default function task({task}){
 
                 <div className={styles.links}>
 
-                <Button className={styles.LoginButton} onClick={handleEdit} >Edit</Button>
+                <Button className={styles.LoginButton} onClick={handleEdit} >{button}</Button>
                 <Button className={styles.LoginButton} onClick={handleSave} >Save</Button>
-                <Button className={styles.LoginButton} >Delete</Button>
+                <Button className={styles.LoginButton} onClick={handleDelete} >Delete</Button>
 
 
                 </div>
