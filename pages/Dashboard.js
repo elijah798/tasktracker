@@ -1,5 +1,8 @@
 import styles from '../styles/Home.module.css'
+import CreateTask from '../components/CreateTask'
 import { useState } from 'react';
+import Modal from 'react-bootstrap/Modal'
+import Button from 'react-bootstrap/Button'
 import { getXataClient } from '../src/xata'
 import Link from 'next/link';
 
@@ -18,6 +21,10 @@ export async function getServerSideProps(context) {
 export default function Dashboard({tasks}){
 
     const [active, setActive] = useState(true)
+    const [show, setShow] = useState(false)
+
+    const handleClose = () => setShow(false);
+    const handleShow = () => setShow(true);
 
     const onClick = () => {
         setActive(!active)
@@ -51,6 +58,8 @@ export default function Dashboard({tasks}){
                 </div>
                 
                 <div className={styles.grid}>
+                <CreateTask/>
+                    
 
 
                     {
@@ -70,12 +79,12 @@ export default function Dashboard({tasks}){
 
                             )
                         }
-                        )
+                    )
 
-                    }
+                }
                 </div>
-            </div>
 
+                </div>
 
             </main>
 

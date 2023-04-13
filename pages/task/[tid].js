@@ -15,12 +15,9 @@ const xata = getXataClient();
 
 
 export const getServerSideProps = async (context) => {
+
     const tid = context.params.tid;
-
-
     const task = await xata.db.tasks.read(tid);
-
-
 
     return {
         props: {
@@ -36,11 +33,8 @@ export const getServerSideProps = async (context) => {
 export default function task({task}){
 
     const router = useRouter();
-
     const [active, setActive] = useState(true);
     const [button, setButton] = useState("Edit");
-
-
 
     const handleEdit = () => {
         setActive(!active)
@@ -49,7 +43,6 @@ export default function task({task}){
         }else{
             setButton("Edit")
         }
-
     }
 
     const handleDelete = () => {
@@ -72,6 +65,7 @@ export default function task({task}){
         if(!active){
             console.log("saving")
             setActive(!active)
+            setButton("Edit")
             task.Status = document.getElementById("statusSelect").value;
             task.Priority = document.getElementById("prioritySelect").value;
     
@@ -85,10 +79,6 @@ export default function task({task}){
                 })
     
         }
-        console.log("After saving")
-
-
-
 
 }
 
