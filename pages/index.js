@@ -2,6 +2,8 @@ import Head from 'next/head'
 import Image from 'next/image'
 import styles from '../styles/Home.module.css'
 import { Button } from 'react-bootstrap'
+import LoginButton from '../components/login-btn'
+import { SessionProvider } from 'next-auth/react'
 
 
 
@@ -26,11 +28,13 @@ export default function Home() {
           Welcome to <a href="#">Ject.io</a>
         </h1>
         <p className={styles.description}>{"The last project management software you'll ever need."}</p>
-        <a href='/Dashboard'>
+        {/* <a href='/Dashboard'> */}
         <div className={styles.LoginButton}>
-            Login
+          <LoginButton />
+        
+
         </div>
-        </a>
+        {/* </a> */}
 
         </main>
 

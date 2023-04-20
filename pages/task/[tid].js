@@ -5,6 +5,7 @@ import styles from '../../styles/Home.module.css'
 import { getXataClient } from '../../src/xata'
 import Link from 'next/link';
 import Button from 'react-bootstrap/Button'
+import {useSession} from 'next-auth/react';
 
 
 const xata = getXataClient();
@@ -31,6 +32,8 @@ export const getServerSideProps = async (context) => {
 
 
 export default function task({task}){
+
+    const {data: session, status} = useSession();
 
     const router = useRouter();
     const [active, setActive] = useState(true);
@@ -82,10 +85,6 @@ export default function task({task}){
 
 }
 
-
-
-
-
     const date = new Date(task.DueDate).toLocaleDateString();
  
     return(
@@ -114,14 +113,15 @@ export default function task({task}){
                     </select>
                 </div>
 
+
+                {session ? ( 
                 <div className={styles.links}>
+                    <Button className={styles.LoginButton} onClick={handleEdit} >{button}</Button>
+                    <Button className={styles.LoginButton} onClick={handleSave} >Save</Button>
+                    <Button className={styles.LoginButton} onClick={handleDelete} >Delete</Button>
+                </div>) : (
+                    <p>Please Login</p>)}
 
-                <Button className={styles.LoginButton} onClick={handleEdit} >{button}</Button>
-                <Button className={styles.LoginButton} onClick={handleSave} >Save</Button>
-                <Button className={styles.LoginButton} onClick={handleDelete} >Delete</Button>
-
-
-                </div>
         </div>
 
 
