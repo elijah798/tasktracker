@@ -1,14 +1,27 @@
 import {useSession, signIn, signOut} from 'next-auth/react'
 import styles from '../styles/Home.module.css'
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
+import { faCaretDown } from '@fortawesome/free-solid-svg-icons'
 
 export default function Component() {
     const {data: session } = useSession()
     if (session) {
         return (
             <>
-            <button className={styles.LoginButton} onClick={() => signOut()}>Sign out</button> <br/>
+            <div className={styles.accdropdown}>
+                <img className={styles.ProfilePicture} src={session.user.image} alt="profile picture" />
 
-            Signed in as {session.user.email}
+                <div className={styles.dropdown}>
+                <FontAwesomeIcon className={styles.dropdownicon} icon={faCaretDown} size="2xs" style={{color: "#FFFFFF",}} />
+                    <div className={styles.dropdowncontent}>
+                        <a className={styles.accitem}>Profile</a>
+                        <a className={styles.accitem}>Settings</a>
+                        <a className={styles.accitem} onClick={() => signOut()}>Sign Out</a>
+                    </div>
+                </div>
+                
+            </div>
+
             </>
 
         )
@@ -16,8 +29,8 @@ export default function Component() {
     return (
         <>
         <button className={styles.LoginButton} onClick={() => signIn()}>Sign in</button><br/>
-        Not signed in 
+        
         </>
     )
-
-}
+    }
+// }   

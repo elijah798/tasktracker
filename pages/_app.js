@@ -1,4 +1,5 @@
 import '../styles/globals.css'
+import NavBar from '../components/NavBar'
 import {SessionProvider} from "next-auth/react"
 import { useState } from 'react';
 
@@ -11,6 +12,7 @@ export default function App({
     return (
 
       <SessionProvider session={session}>
+        <NavBar/>
         {<Component {...pageProps} />}
       </SessionProvider>
         

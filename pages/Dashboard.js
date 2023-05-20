@@ -54,26 +54,10 @@ export default function Dashboard({tasks}){
     return(
         <div className={styles.container}>
             <main className={styles.main}>
-            <LoginButton/>
-            <h1 className={styles.title}>Dashboard</h1>
-            <div className={styles.taskview}>
-                <div className={styles.grid}>
-                    <a className={styles.subtitle} href="#">Projects</a>
-                    <a className={styles.active} href="#">Tasks</a>
-                    <a className={styles.subtitle} href="#">Team</a>
-
-                </div>
-                <br></br>
-
-                <div className={styles.taskviewheader}>
-              
-                </div>
+            
+           <p>Hi, You found the secret greeting!</p>
 
 
-
-                <TaskList tasks={tasks} />
-                
-                </div>
             </main>
         </div>
     )
