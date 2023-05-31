@@ -285,6 +285,23 @@
   margin-right: 20px;
 }
 
+.imgcontainer > div {
+  position: unset !important;
+}
+
+.imgcontainer {
+
+  width: 100%;
+}
+
+  .ProfilePicture {
+    object-fit: contain;
+    width: 3vw !important;
+    position: relative !important;
+    height: unset !important;
+  }
+
+
 @media (max-width: 900px) {
   .grid {
     width: 100%;

@@ -10,8 +10,9 @@ export default function Component() {
         return (
             <>
             <div className={styles.accdropdown}>
-                <Image className={styles.ProfilePicture} src={session.user.image} alt="profile picture" />
-
+                <div className={styles.imgcontainer}>
+                <Image className={styles.ProfilePicture} fill="true" src={session.user.image} alt="profile picture" />
+                </div>
                 <div className={styles.dropdown}>
                 <FontAwesomeIcon className={styles.dropdownicon} icon={faCaretDown} size="2xs" style={{color: "#FFFFFF",}} />
                     <div className={styles.dropdowncontent}>
