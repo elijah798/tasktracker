@@ -32,9 +32,9 @@ export default function NavBar() {
 
                 <div className={styles.navlinks}>
 
-                        <Link className={styles.navbaritemtextactive} href="/dashboard">Dashboard</Link>
-                        <a className={styles.navbaritemtext} href="/tasks">Tasks</a>
-                        <a className={styles.navbaritemtext} href="/team">Team</a>
+                        <Link className={styles.navbaritemtext} href="/dashboard">Dashboard</Link>
+                        <Link className={styles.navbaritemtext} href="/tasks">Tasks</Link>
+                        <Link className={styles.navbaritemtext} href="/team">Team</Link>
 
                 </div>
             </div>

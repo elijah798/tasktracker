@@ -1,6 +1,7 @@
-import Modal from "react-bootstrap/Modal";
-import Button from "react-bootstrap/Button";
 import styles from "../styles/Home.module.css";
+import Modal from "@mui/material/Modal";
+import Button from "@mui/material/Button";
+import Box from "@mui/material/Box";
 import { useState } from "react";
 
 function CreateTask() {
@@ -36,11 +37,13 @@ function CreateTask() {
         <>
             <Button className={styles.LoginButton} onClick={handleShow}>Create Task</Button>
 
-            <Modal show={show} onHide={handleClose}>
-                <Modal.Header closeButton>
-                    <Modal.Title>Create Task</Modal.Title>
-                </Modal.Header>
-                <Modal.Body>
+            <Modal open={show} onClose={handleClose}>
+                <Box sx={{
+        width: 300,
+        height: 300,
+        backgroundColor: 'primary.dark',
+      }}>
+                
                     <form onSubmit={handleSubmit}>
                         <label>
                             Task description:
@@ -72,12 +75,7 @@ function CreateTask() {
                         </label>
                         <input type="submit" value="Create Task" />
                     </form>
-                </Modal.Body>
-                <Modal.Footer>
-                    <Button variant="secondary" onClick={handleClose}>
-                        Close
-                    </Button>
-                </Modal.Footer>
+                    </Box>
             </Modal>
         </>
     );

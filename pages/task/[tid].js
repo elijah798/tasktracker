@@ -89,7 +89,6 @@ export default function task({task}){
  
     return(
         <div className={styles.container} key={task.id}>
-                <Link href='/Dashboard/'><h1 className={ styles.bluetext}>Dashboard</h1></Link>
             <h1 className={styles.title}>Task ID: {task.id}</h1>
             
                 <h1>Description: {task.Description}</h1>

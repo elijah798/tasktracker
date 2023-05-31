@@ -27,7 +27,6 @@ function TaskList({tasks}){
                             <CreateTask />
             {
               
-
                 tasks.map((task) => {
                     return (
                         <div className={styles.card} key={task.id}>
