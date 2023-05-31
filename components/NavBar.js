@@ -4,6 +4,7 @@ import { faCaretDown } from '@fortawesome/free-solid-svg-icons'
 import LoginButton from '../components/login-btn'
 import { useRouter } from 'next/router'
 import { useState } from 'react';
+import Link from 'next/link'
 
 
 export default function NavBar() {
@@ -31,7 +32,7 @@ export default function NavBar() {
 
                 <div className={styles.navlinks}>
 
-                        <a className={styles.navbaritemtextactive} href="/dashboard">Dashboard</a>
+                        <Link className={styles.navbaritemtextactive} href="/dashboard">Dashboard</Link>
                         <a className={styles.navbaritemtext} href="/tasks">Tasks</a>
                         <a className={styles.navbaritemtext} href="/team">Team</a>
 
