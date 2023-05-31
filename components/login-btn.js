@@ -2,6 +2,7 @@ import {useSession, signIn, signOut} from 'next-auth/react'
 import styles from '../styles/Home.module.css'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { faCaretDown } from '@fortawesome/free-solid-svg-icons'
+import Image from 'next/image'
 
 export default function Component() {
     const {data: session } = useSession()
@@ -9,7 +10,7 @@ export default function Component() {
         return (
             <>
             <div className={styles.accdropdown}>
-                <img className={styles.ProfilePicture} src={session.user.image} alt="profile picture" />
+                <Image className={styles.ProfilePicture} src={session.user.image} alt="profile picture" />
 
                 <div className={styles.dropdown}>
                 <FontAwesomeIcon className={styles.dropdownicon} icon={faCaretDown} size="2xs" style={{color: "#FFFFFF",}} />
