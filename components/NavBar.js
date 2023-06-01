@@ -31,14 +31,14 @@ export default function NavBar() {
 
     return (
 
-        <Container maxWidth="lg"
+        <Container maxWidth="auto"
 
         style={{backgroundColor: "#1E074C",
                 display: "flex",
                 flexDirection: "row",
                 justifyContent: "space-evenly",
                 alignItems: "center",
-                height: "15vh",
+                height: "11vh",
                 padding: "0px 50px",
 
     }}

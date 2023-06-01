@@ -1,6 +1,7 @@
+/* eslint-disable react-hooks/rules-of-hooks */
 import TaskList from "../components/TaskList";
 import styles from "../styles/Home.module.css";
-import { useSession } from "next-auth/react";
+import {useSession, signIn, signOut} from 'next-auth/react'
 import { getXataClient } from "../src/xata";
 
 const xata = getXataClient();
@@ -21,6 +22,7 @@ export default function tasks({tasks}){
       
 
     const {data: session } = useSession()
+
     tasks.forEach((task) => {
         task.DueDate = new Date(task.DueDate).toLocaleDateString();
     })
