@@ -24,14 +24,10 @@ export async function getServerSideProps(context) {
     }
 }
 
-export default function Dashboard({projects}){
+export default function dashboard({projects}){
 
 
     console.log({projects})
-
-    const [active, setActive] = useState(true)
-    const [show, setShow] = useState(false)
-
 
     const handleClose = () => setShow(false);
     const handleShow = () => setShow(true);
