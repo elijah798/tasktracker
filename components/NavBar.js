@@ -93,7 +93,7 @@ export default function NavBar({projects}) {
                 </div>
 
                 <div className={styles.navlinks}>
-                        <Link className={styles.navbaritemtext} href="/dashboard">Dashboard</Link>
+                        <Link className={styles.navbaritemtext} href="/Dashboard">Dashboard</Link>
                         <Link className={styles.navbaritemtext} href="/tasks">Tasks</Link>
                         <Link className={styles.navbaritemtext} href="/team">Team</Link>
                 </div>
