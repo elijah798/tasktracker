@@ -1,0 +1,16 @@
+{
+  "id": "mig_cgn06vpcschcs729ckng",
+  "parentID": "mig_cgn06rp2s80sdvggnt20",
+  "checksum": "1:ec838f48d7b0bbf5b468fb84ea4a4253b41011fa502c78226faa141aec115d56",
+  "operations": [
+    {
+      "addColumn": {
+        "column": {
+          "name": "Assignee",
+          "type": "string"
+        },
+        "table": "tasks"
+      }
+    }
+  ]
+}

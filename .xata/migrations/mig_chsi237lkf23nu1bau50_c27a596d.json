@@ -1,0 +1,19 @@
+{
+  "id": "mig_chsi237lkf23nu1bau50",
+  "parentID": "mig_chsi1vgbhod8d982s3cg",
+  "checksum": "1:c27a596d281bcfe22a0c80882701964aba480aa173b63a529d54b6fa2f4cdc44",
+  "operations": [
+    {
+      "addColumn": {
+        "column": {
+          "name": "user",
+          "type": "link",
+          "link": {
+            "table": "nextauth-users"
+          }
+        },
+        "table": "nextauth_sessions"
+      }
+    }
+  ]
+}

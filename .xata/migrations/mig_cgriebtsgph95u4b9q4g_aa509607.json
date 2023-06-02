@@ -1,0 +1,14 @@
+{
+  "id": "mig_cgriebtsgph95u4b9q4g",
+  "parentID": "mig_cgnl73acpeagvf2ko4hg",
+  "checksum": "1:aa50960751bd3ec0b04059863121df81749372f286636be9f947f520c8ab5776",
+  "operations": [
+    {
+      "renameColumn": {
+        "newName": "Priority",
+        "oldName": "Severity",
+        "table": "tasks"
+      }
+    }
+  ]
+}

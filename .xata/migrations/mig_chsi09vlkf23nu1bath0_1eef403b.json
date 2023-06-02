@@ -1,0 +1,16 @@
+{
+  "id": "mig_chsi09vlkf23nu1bath0",
+  "parentID": "mig_chsi06vlkf23nu1batg0",
+  "checksum": "1:1eef403b58ab25c31950133f5371d42a0156e0d12b40fbdaebd815fe543163a4",
+  "operations": [
+    {
+      "addColumn": {
+        "column": {
+          "name": "expires_at",
+          "type": "int"
+        },
+        "table": "nextauth_accounts"
+      }
+    }
+  ]
+}

@@ -1,0 +1,14 @@
+{
+  "id": "mig_chsijoqka48qsnnl5oj0",
+  "parentID": "mig_chsijhqic1utdq72mghg",
+  "checksum": "1:a854fc93ed1370c3ca8372b2bb918c72753a618f56eaf6ac474a3dbeaad73427",
+  "operations": [
+    {
+      "renameColumn": {
+        "newName": "email",
+        "oldName": "Email",
+        "table": "nextauth_users"
+      }
+    }
+  ]
+}

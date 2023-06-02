@@ -1,0 +1,14 @@
+{
+  "id": "mig_cgn04jh2s80sdvggnsu0",
+  "parentID": "mig_cgn04hpcschcs729ckkg",
+  "checksum": "1:766dccabea1612e0cd78141cb33936b68a17dcaa7371e3feffd94e3ecc62ca66",
+  "operations": [
+    {
+      "renameColumn": {
+        "newName": "Created_Date",
+        "oldName": "Created",
+        "table": "projects"
+      }
+    }
+  ]
+}

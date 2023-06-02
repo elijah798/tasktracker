@@ -1,0 +1,16 @@
+{
+  "id": "mig_chshv5vlkf23nu1bat5g",
+  "parentID": "mig_chshv1nlkf23nu1bat4g",
+  "checksum": "1:1bd7d13d397cc0ddaa5d04506e7f873e1b2d346daa94a7f094aae5c7d8c4dea6",
+  "operations": [
+    {
+      "addColumn": {
+        "column": {
+          "name": "email",
+          "type": "email"
+        },
+        "table": "nextauth-users"
+      }
+    }
+  ]
+}

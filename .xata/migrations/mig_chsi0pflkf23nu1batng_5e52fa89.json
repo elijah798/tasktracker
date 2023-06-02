@@ -1,0 +1,16 @@
+{
+  "id": "mig_chsi0pflkf23nu1batng",
+  "parentID": "mig_chsi0n7lkf23nu1batmg",
+  "checksum": "1:5e52fa890a271a759bc3418828df971666643b1e52dc88de9d59b6fc333a726b",
+  "operations": [
+    {
+      "addColumn": {
+        "column": {
+          "name": "identifier",
+          "type": "string"
+        },
+        "table": "nextauth_verificationTokens"
+      }
+    }
+  ]
+}

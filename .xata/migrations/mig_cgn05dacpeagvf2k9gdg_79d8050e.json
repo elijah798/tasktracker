@@ -1,0 +1,13 @@
+{
+  "id": "mig_cgn05dacpeagvf2k9gdg",
+  "parentID": "mig_cgn056h2s80sdvggnt00",
+  "checksum": "1:79d8050ebed3599546fe33da6fad71f2f3f0acf8ca773c61c90faab69c2b15b1",
+  "operations": [
+    {
+      "removeColumn": {
+        "column": "Tasks",
+        "table": "projects"
+      }
+    }
+  ]
+}

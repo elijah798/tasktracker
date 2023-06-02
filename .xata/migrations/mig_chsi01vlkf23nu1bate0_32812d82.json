@@ -1,0 +1,16 @@
+{
+  "id": "mig_chsi01vlkf23nu1bate0",
+  "parentID": "mig_chshvtflkf23nu1batd0",
+  "checksum": "1:32812d82e9e78d6812125d5aff68deb47c18863aa0f4bb2c02e7ff8212d2899d",
+  "operations": [
+    {
+      "addColumn": {
+        "column": {
+          "name": "providerAccountId",
+          "type": "string"
+        },
+        "table": "nextauth_accounts"
+      }
+    }
+  ]
+}

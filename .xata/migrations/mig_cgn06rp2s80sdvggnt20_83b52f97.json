@@ -1,0 +1,16 @@
+{
+  "id": "mig_cgn06rp2s80sdvggnt20",
+  "parentID": "mig_cgn06picpeagvf2k9gfg",
+  "checksum": "1:83b52f97844ce592aa451a4754a539a4c1829b323d345bc8312225de83db83bb",
+  "operations": [
+    {
+      "addColumn": {
+        "column": {
+          "name": "Severity",
+          "type": "string"
+        },
+        "table": "tasks"
+      }
+    }
+  ]
+}

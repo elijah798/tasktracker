@@ -1,0 +1,16 @@
+{
+  "id": "mig_chsi0bnlkf23nu1bati0",
+  "parentID": "mig_chsi09vlkf23nu1bath0",
+  "checksum": "1:a6816e59fa12dc6c4211e83311725f1a68c09b696a85b637e3b7ded1a64c2552",
+  "operations": [
+    {
+      "addColumn": {
+        "column": {
+          "name": "token_type",
+          "type": "string"
+        },
+        "table": "nextauth_accounts"
+      }
+    }
+  ]
+}

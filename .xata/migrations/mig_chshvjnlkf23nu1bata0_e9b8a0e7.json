@@ -1,0 +1,12 @@
+{
+  "id": "mig_chshvjnlkf23nu1bata0",
+  "parentID": "mig_chshvfflkf23nu1bat8g",
+  "checksum": "1:e9b8a0e79ea9351c6e7b730bd8ad30e7df4ef423e19bc13b0d99e0aeb8a27384",
+  "operations": [
+    {
+      "addTable": {
+        "table": "nextauth_accounts"
+      }
+    }
+  ]
+}

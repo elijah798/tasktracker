@@ -1,0 +1,16 @@
+{
+  "id": "mig_cgn04epcschcs729ckjg",
+  "parentID": "mig_cgn048p2s80sdvggnst0",
+  "checksum": "1:5e540580181a21d6b4b38c06b1be76da74dc2b4a09a2b63e0f80b925b783d3c5",
+  "operations": [
+    {
+      "addColumn": {
+        "column": {
+          "name": "Last_Updated",
+          "type": "datetime"
+        },
+        "table": "projects"
+      }
+    }
+  ]
+}

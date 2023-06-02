@@ -1,0 +1,16 @@
+{
+  "id": "mig_cgn07bqcpeagvf2k9ggg",
+  "parentID": "mig_cgn076hcschcs729ckpg",
+  "checksum": "1:f7d52622888cd844abdd23ff7db07fd8df12ae25ad537720c6269bc1829f25e2",
+  "operations": [
+    {
+      "addColumn": {
+        "column": {
+          "name": "Date_Created",
+          "type": "datetime"
+        },
+        "table": "tasks"
+      }
+    }
+  ]
+}

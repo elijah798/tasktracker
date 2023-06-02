@@ -1,4 +1,5 @@
 import styles from '../styles/Home.module.css'
+import NavBar from '../components/NavBar';
 import CreateTask from '../components/CreateTask'
 import LoginButton from '../components/login-btn'
 import { useState } from 'react';
@@ -14,24 +15,23 @@ import TaskList from '../components/TaskList';
 const xata = getXataClient();
 
 export async function getServerSideProps(context) {
-    const tasks = await xata.db.tasks.getAll();
+    const projects = await xata.db.projects.getAll();
     return {
         props: {
-            tasks: JSON.parse(JSON.stringify(tasks)),
-            
-            
-            
+            projects: JSON.parse(JSON.stringify(projects)),
+ 
         }
     }
 }
 
-export default function Dashboard({tasks}){
+export default function Dashboard({projects}){
 
-    
 
+    console.log({projects})
 
     const [active, setActive] = useState(true)
     const [show, setShow] = useState(false)
+
 
     const handleClose = () => setShow(false);
     const handleShow = () => setShow(true);
@@ -41,24 +41,16 @@ export default function Dashboard({tasks}){
     }
 
 
-
-
-  
-    tasks.forEach((task) => {
-        task.DueDate = new Date(task.DueDate).toLocaleDateString();
-    })
-
-    
-
-
     return(
-        <div className={styles.container}>
-            <main className={styles.main}>
-            
-           <p>Hi, You found the secret greeting!</p>
+        <>
+            <NavBar projects={projects}/>
 
+            <div className={styles.container}>
+                <main className={styles.main}>
+                    <p>Hi, You found the secret greeting!</p>
+                </main>
+            </div>
+        </>
 
-            </main>
-        </div>
     )
 }

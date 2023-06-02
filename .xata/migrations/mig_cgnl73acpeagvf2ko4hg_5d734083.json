@@ -1,0 +1,16 @@
+{
+  "id": "mig_cgnl73acpeagvf2ko4hg",
+  "parentID": "mig_cgn07m12s80sdvggnt9g",
+  "checksum": "1:5d734083c94b07251020e0a704264b4ca4e36c7f785b4b0f03920aef42d36662",
+  "operations": [
+    {
+      "addColumn": {
+        "column": {
+          "name": "DueDate",
+          "type": "datetime"
+        },
+        "table": "tasks"
+      }
+    }
+  ]
+}

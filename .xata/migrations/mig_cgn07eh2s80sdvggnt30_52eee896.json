@@ -1,0 +1,16 @@
+{
+  "id": "mig_cgn07eh2s80sdvggnt30",
+  "parentID": "mig_cgn07bqcpeagvf2k9ggg",
+  "checksum": "1:52eee896d07553b38fabd689554acc6c78c22454c83a628c889d8e3814c96df0",
+  "operations": [
+    {
+      "addColumn": {
+        "column": {
+          "name": "Last_Updated",
+          "type": "datetime"
+        },
+        "table": "tasks"
+      }
+    }
+  ]
+}

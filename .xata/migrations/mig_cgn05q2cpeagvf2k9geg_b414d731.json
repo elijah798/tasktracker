@@ -1,0 +1,16 @@
+{
+  "id": "mig_cgn05q2cpeagvf2k9geg",
+  "parentID": "mig_cgn05m1cschcs729ckmg",
+  "checksum": "1:b414d7319c47d4d52eea55b156956ad6c8a91dbe1360bfd102fb8ea1e350eadd",
+  "operations": [
+    {
+      "addColumn": {
+        "column": {
+          "name": "Status",
+          "type": "string"
+        },
+        "table": "tasks"
+      }
+    }
+  ]
+}

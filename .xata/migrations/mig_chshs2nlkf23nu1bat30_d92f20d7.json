@@ -1,0 +1,19 @@
+{
+  "id": "mig_chshs2nlkf23nu1bat30",
+  "parentID": "mig_cgriebtsgph95u4b9q4g",
+  "checksum": "1:d92f20d733091ac3d8ed84e99745adbca104ec140e633c67f3f776e81e262737",
+  "operations": [
+    {
+      "addColumn": {
+        "column": {
+          "name": "project_id",
+          "type": "link",
+          "link": {
+            "table": "projects"
+          }
+        },
+        "table": "tasks"
+      }
+    }
+  ]
+}

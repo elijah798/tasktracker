@@ -14,7 +14,9 @@ import { Paper } from '@mui/material';
 import React from 'react';
 
 
-export default function NavBar() {
+
+
+export default function NavBar({projects}) {
     const router = useRouter()
     const path = router.pathname;
 
@@ -27,6 +29,15 @@ export default function NavBar() {
         setAnchorEl(null);
         };
 
+        console.log({projects})
+        //create a list of projects from the projects prop
+        const projectList = projects.map((project) => {
+            return(
+                <MenuItem key={project.id}  onClick={handleClose}>{project.Project_Title}</MenuItem>
+            )
+        })
+        
+
 
 
     return (
@@ -38,7 +49,7 @@ export default function NavBar() {
                 flexDirection: "row",
                 justifyContent: "space-evenly",
                 alignItems: "center",
-                height: "11vh",
+                height: "15vh",
                 padding: "0px 50px",
 
     }}
@@ -70,9 +81,7 @@ export default function NavBar() {
                         
                         >
                             <Paper elevation={24} square>
-                            <MenuItem  onClick={handleClose}>SM1: Sherman Manufacturing</MenuItem>
-                            <MenuItem  onClick={handleClose}>SM2: Sherman Manufacturing</MenuItem>
-                            <MenuItem  onClick={handleClose}>SM3: Sherman Manufacturing</MenuItem>
+                            {projectList}
                             </Paper>
 
                         </Menu>

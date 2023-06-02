@@ -1,0 +1,14 @@
+{
+  "id": "mig_cgn0721cschcs729ckog",
+  "parentID": "mig_cgn06vpcschcs729ckng",
+  "checksum": "1:e51c2d673d99bae83683c199aa32f4b5b669c57f7ac545fac580e6cf88d71a98",
+  "operations": [
+    {
+      "renameColumn": {
+        "newName": "Owner",
+        "oldName": "Assignee",
+        "table": "tasks"
+      }
+    }
+  ]
+}

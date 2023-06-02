@@ -1,0 +1,16 @@
+{
+  "id": "mig_cgn06h12s80sdvggnt10",
+  "parentID": "mig_cgn05q2cpeagvf2k9geg",
+  "checksum": "1:4ea109bff22069b2c96420a44acb7faf734b21001f7ac3ede24ed847ac7d91dc",
+  "operations": [
+    {
+      "addColumn": {
+        "column": {
+          "name": "Severity",
+          "type": "multiple"
+        },
+        "table": "tasks"
+      }
+    }
+  ]
+}
