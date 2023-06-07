@@ -4,8 +4,10 @@ import { useState } from 'react';
 import styles from '../../styles/Home.module.css'
 import { getXataClient } from '../../src/xata'
 import Link from 'next/link';
-import Button from 'react-bootstrap/Button'
+import Button from '@mui/material/Button';
 import {useSession} from 'next-auth/react';
+import { FormControl, Select } from '@mui/base';
+import { MenuItem } from '@mui/material';
 
 
 
@@ -38,7 +40,13 @@ export default function task({task}){
 
     const router = useRouter();
     const [active, setActive] = useState(true);
+    const [Priority, setPriority] = useState("");
     const [button, setButton] = useState("Edit");
+
+    const handleChange = (event) => {
+        setPriority(event.target.value);
+    };
+
 
     const handleEdit = () => {
         setActive(!active)
@@ -106,19 +114,33 @@ export default function task({task}){
 
                 <div className={styles.selectGroup}>
                     <h1>Priority:</h1>
-                    <select id="prioritySelect" disabled={active} defaultValue={task.Priority}>
-                        <option value="High">High</option>
-                        <option value="Medium">Medium</option>
+                    {/* <select id="prioritySelect" disabled={active} defaultValue={task.Priority}>
                         <option value="Low">Low</option>
-                    </select>
+                        <option value="Medium">Medium</option>
+                        <option value="High">High</option>
+                    </select> */}
+
+                                        <Select
+                        disabled={active}
+                        defaultValue={task.Priority}
+                        id="prioritySelect"
+                        value={Priority}
+                        label="Priority"
+                        onChange={handleChange}
+                    >
+                        <MenuItem value={"Low"}>Low</MenuItem>
+                        <MenuItem value={"Medium"}>Medium</MenuItem>
+                        <MenuItem value={"High"}>High</MenuItem>
+                    </Select>
+
                 </div>
 
 
                 {session ? ( 
                 <div className={styles.links}>
-                    <Button className={styles.LoginButton} onClick={handleEdit} >{button}</Button>
-                    <Button className={styles.LoginButton} onClick={handleSave} >Save</Button>
-                    <Button className={styles.LoginButton} onClick={handleDelete} >Delete</Button>
+                    <Button onClick={handleEdit} >{button}</Button>
+                    <Button onClick={handleSave} >Save</Button>
+                    <Button onClick={handleDelete} >Delete</Button>
                 </div>) : (
                     <p>Please Login</p>)}
 

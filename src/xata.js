@@ -16,6 +16,7 @@ const tables = [
       { name: "Project", type: "link", link: { table: "projects" } },
       { name: "DueDate", type: "datetime" },
       { name: "project_id", type: "link", link: { table: "projects" } },
+      { name: "Title", type: "string" },
     ],
   },
   {
