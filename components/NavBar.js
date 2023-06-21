@@ -4,14 +4,10 @@ import { faCaretDown } from '@fortawesome/free-solid-svg-icons'
 import LoginButton from '../components/login-btn'
 import { useRouter } from 'next/router'
 import { useState } from 'react';
-import Link from 'next/link'
-import {Container} from '@mui/material'
-import { Menu } from '@mui/base';
-import { MenuItem } from '@mui/material';
-import { Button } from '@mui/material';
-import { Box } from '@mui/system'
-import { Paper } from '@mui/material';
+import Link from 'next/link';
 import React from 'react';
+import { Button, Space, Dropdown } from 'antd'
+
 
 
 
@@ -30,19 +26,12 @@ export default function NavBar({projects}) {
         };
 
         console.log({projects})
-        //create a list of projects from the projects prop
-        const projectList = projects.map((project) => {
-            return(
-                <MenuItem key={project.id}  onClick={handleClose}>{project.Project_Title}</MenuItem>
-            )
-        })
-        
 
 
-
+       
     return (
 
-        <Container maxWidth="auto"
+        <div 
 
         style={{backgroundColor: "#1E074C",
                 display: "flex",
@@ -58,38 +47,6 @@ export default function NavBar({projects}) {
             <div className={styles.navbarcontainer}>
                 <div className={styles.projectselector}>
                     <h1 className={styles.subtitle}>Ject.io: Development</h1>
-                    <div className={styles.dropdown}>
-                        <Button
-                        id='project-button'
-                        aria-controls={open ? 'project-menu' : undefined}
-                        aria-haspopup="true"
-                        aria-expanded={open ? 'true' : undefined}
-                        onClick={open ? handleClose : handleClick}
-                        >
-                        <FontAwesomeIcon className={styles.dropdownicon} icon={faCaretDown} size="2xs" style={{color: "#FFFFFF",}} />
-                        </Button>
-
-
-                        <Menu
-                        id="project-menu"
-                        anchorEl={anchorEl}
-                        open={open}
-                        onClose={handleClose}
-                        MenuListProps={{
-                            'aria-labelledby': 'project-button',
-                        }}
-                        
-                        >
-                            <Paper elevation={24} square>
-                            {projectList}
-                            </Paper>
-
-                        </Menu>
-
-                        
-                    
-    
-                    </div>
                 </div>
 
                 <div className={styles.navlinks}>
@@ -102,7 +59,7 @@ export default function NavBar({projects}) {
             <div className={styles.loginbutton}>
                 <LoginButton/>
             </div>
-        </Container>
+        </div>
 
 
     )

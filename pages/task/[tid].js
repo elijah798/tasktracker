@@ -4,10 +4,9 @@ import { useState } from 'react';
 import styles from '../../styles/Home.module.css'
 import { getXataClient } from '../../src/xata'
 import Link from 'next/link';
-import Button from '@mui/material/Button';
+
 import {useSession} from 'next-auth/react';
-import { FormControl, Select } from '@mui/base';
-import { MenuItem } from '@mui/material';
+
 
 
 
@@ -120,7 +119,7 @@ export default function task({task}){
                         <option value="High">High</option>
                     </select> */}
 
-                                        <Select
+                                        <select
                         disabled={active}
                         defaultValue={task.Priority}
                         id="prioritySelect"
@@ -128,19 +127,19 @@ export default function task({task}){
                         label="Priority"
                         onChange={handleChange}
                     >
-                        <MenuItem value={"Low"}>Low</MenuItem>
-                        <MenuItem value={"Medium"}>Medium</MenuItem>
-                        <MenuItem value={"High"}>High</MenuItem>
-                    </Select>
+                        <option value={"Low"}>Low</option>
+                        <option value={"Medium"}>Medium</option>
+                        <option value={"High"}>High</option>
+                    </select>
 
                 </div>
 
 
                 {session ? ( 
                 <div className={styles.links}>
-                    <Button onClick={handleEdit} >{button}</Button>
-                    <Button onClick={handleSave} >Save</Button>
-                    <Button onClick={handleDelete} >Delete</Button>
+                    <button onClick={handleEdit} >{button}</button>
+                    <button onClick={handleSave} >Save</button>
+                    <button onClick={handleDelete} >Delete</button>
                 </div>) : (
                     <p>Please Login</p>)}
 

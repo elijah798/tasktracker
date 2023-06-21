@@ -1,7 +1,9 @@
 import '../styles/globals.css'
-
+import { Layout } from 'antd';
+import { ConfigProvider } from 'antd';
 import {SessionProvider} from "next-auth/react"
 import { useState } from 'react';
+
 
 import NavBar from '../components/NavBar';
 
@@ -21,7 +23,17 @@ export default function App({
 
     return (
       <SessionProvider session={session}>
-        {<Component {...pageProps} />}
+        <ConfigProvider
+    theme={{
+      token: {
+        colorPrimary: '#1E074C',
+      },
+    }}
+  >
+
+    {<Component {...pageProps} />}
+  </ConfigProvider>
+
       </SessionProvider>
         
     )
