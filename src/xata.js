@@ -26,6 +26,7 @@ const tables = [
       { name: "Project_Description", type: "string" },
       { name: "Created_Date", type: "datetime" },
       { name: "Last_Updated", type: "datetime" },
+      { name: "Team", type: "link", link: { table: "nextauth_users" } },
     ],
   },
   {

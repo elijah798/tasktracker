@@ -9,6 +9,8 @@ import { Table } from "antd";
 import {useSession, signIn, signOut} from 'next-auth/react'
 import { getXataClient } from "../src/xata";
 import { FloatButton } from 'antd';
+import { handleClientScriptLoad } from "next/script";
+import { useRouter } from "next/router";
 
 const xata = getXataClient();
 
@@ -27,6 +29,27 @@ export async function getServerSideProps(context) {
 }
 
 export default function tasks({tasks, projects}){
+
+    const Router = useRouter();
+
+    const handleDelete = (id) => {
+        console.log(id)
+        // run api call to delete task
+        fetch('/api/tasks', {
+            method: 'DELETE',
+            headers: {
+                'Content-Type': 'application/json'
+            },
+            body: JSON.stringify({
+                id: id,
+        })
+        })
+    }
+
+    const opentask = (id) => {
+        Router.push(`/task/${id}`);
+    }
+
       
 
     const {data: session } = useSession()
@@ -40,43 +63,32 @@ export default function tasks({tasks, projects}){
             title: 'id',
             dataIndex: 'id',
             key: 'id',
+
         },
         {
             title: 'Task Name',
             dataIndex: 'Description',
             key: 'Description',
-            render: (text, record) => <a href={`/task/${record.id}`}>{text}</a>,
+
         },
 
         {
             title: 'Due Date',
             dataIndex: 'DueDate',
             key: 'DueDate',
+
         },
         {
             title: 'Priority',
             dataIndex: 'Priority',
             key: 'Priority',
+
         },
         {
             title: 'Status',
             dataIndex: 'Status',
             key: 'Status',
-        },
-        {
-            title: 'Action',
-            dataIndex: '',
-            key: 'x',
-            render: () => {
-                return (
-                    <div>
-                        <Space size='small'>
-                        <Button type='primary' ghost onClick={console.log('Edit')}>Edit</Button>
-                        <Button danger onClick={console.log('Delete')}>Delete</Button>
-                        </Space>
-                    </div>
-                )
-            }
+
         },
     ]
 
@@ -89,7 +101,15 @@ export default function tasks({tasks, projects}){
                 <NavBar projects={projects}/>
                 </Affix>
 
-                <Table dataSource={tasks} columns={taskcolumns} />
+                <Table style={
+                    {
+                        cursor: 'pointer'
+                    }
+                } onRow={(record, rowIndex) => {
+    return {
+      onClick: event => {opentask(record.id)}, // click row
+    };
+  }} dataSource={tasks} columns={taskcolumns} />
                 <FloatButton type="primary" shape="circle" size="large" icon={<PlusOutlined />}/>
 
 

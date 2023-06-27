@@ -1,0 +1,19 @@
+{
+  "id": "mig_ciceq0juv4sg2jb6k760",
+  "parentID": "mig_chvtmsvl15ih6smednu0",
+  "checksum": "1:9f71800f26b6db6708d7afa270863de639cacfa6d6920674db58d7a30ae5d66d",
+  "operations": [
+    {
+      "addColumn": {
+        "column": {
+          "name": "Team",
+          "type": "link",
+          "link": {
+            "table": "nextauth_users"
+          }
+        },
+        "table": "projects"
+      }
+    }
+  ]
+}
