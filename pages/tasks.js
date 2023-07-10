@@ -11,37 +11,40 @@ import { getXataClient } from "../src/xata";
 import { FloatButton } from 'antd';
 import { handleClientScriptLoad } from "next/script";
 import { useRouter } from "next/router";
+import { useState } from "react";
 
 const xata = getXataClient();
 
 export async function getServerSideProps(context) {
     const tasks = await xata.db.tasks.getAll();
     const projects = await xata.db.projects.getAll();
+    const user = await xata.db.nextauth_users.getFirst({email: context.req.cookies.email});
 
     return {
         props: {
             tasks: JSON.parse(JSON.stringify(tasks)),
             projects: JSON.parse(JSON.stringify(projects)),
+            user: JSON.parse(JSON.stringify(user)),
             
              
         }
     }
 }
 
-export default function tasks({tasks, projects}){
+export default function tasks({tasks, projects, user}){
 
     const Router = useRouter();
 
-    const refreshData = () => {
-        Router.replace(Router.asPath);
-    }
+    const [Role, setRole] = useState(user.Role);
+    const [pointer, setPointer] = useState(Role == "admin" ? "pointer" : "auto");
 
     const opentask = (id) => {
-        Router.push(`/task/${id}`);
+        if(user.Role == "admin"){
+            Router.push(`/task/${id}`);
+        }
+
     }
 
- 
-      
 
     const {data: session } = useSession()
 
@@ -88,17 +91,18 @@ export default function tasks({tasks, projects}){
     if (session) {
         return (
             <>
+
                 <Affix offsetTop={0}>
                 <NavBar projects={projects}/>
                 </Affix>
 
                 <Table style={
                     {
-                        cursor: 'pointer',
+                        cursor: pointer,
                     }
                 } onRow={(record, rowIndex) => {
     return {
-      onClick: event => {opentask(record.id)}, // click row
+      onClick: (event) => {opentask(record.id)}, // click row
     };
   }} dataSource={tasks} columns={taskcolumns} />
                 <FloatButton type="primary" shape="circle" size="large" icon={<PlusOutlined />}/>
