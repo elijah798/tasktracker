@@ -4,6 +4,8 @@ import { useSession } from 'next-auth/react'
 import LoginBtn from '../components/login-btn'
 import CreateTask from './CreateTask'
 
+
+
 function TaskList({tasks}){
 
     const {data: session, status} = useSession();
@@ -23,25 +25,41 @@ function TaskList({tasks}){
 
    
     return (
-        <div className={styles.grid}>
-                            <CreateTask />
-            {
+            <>
+
+            </>
+        )
+    }
+
+
+export default TaskList
+
+
+{/* {
               
                 tasks.map((task) => {
                     return (
-                        <div className={styles.card} key={task.id}>
-                            <Link key={task.id} href={`/task/${task.id}`}>
-                                <h2>{task.Description}</h2>
-                                <p>Due Date: {task.DueDate}</p>
-                                <p>Status: {task.Status}</p>
-                                <p>Priority: {task.Priority}</p>
-                            </Link>
-                        </div>
+                        <Card key={task.id} sx={{ minWidth: 275 }}>
+                            <CardContent>
+                                <Typography sx={{ fontSize: 14 }} color="text.secondary" gutterBottom>
+                                {task.DueDate}
+                                </Typography>
+                                <Typography variant="h5" component="div">
+                                {task.Name}
+                                </Typography>
+                                <Typography sx={{ mb: 1.5 }} color="text.secondary">
+                                {task.Description}
+                                </Typography>
+                                <Typography variant="body2">
+                                {task.name}
+                                <br />
+                                {'"a benevolent smile"'}
+                                </Typography>
+                            </CardContent>
+                            <CardActions>
+                                <Button size="small">Learn More</Button>
+                            </CardActions>
+                        </Card>
                     )
                 })
-            }
-        </div>
-    )
-}
-
-export default TaskList
+            } */}

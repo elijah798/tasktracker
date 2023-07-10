@@ -1,0 +1,16 @@
+{
+  "id": "mig_cid34ogj4fk63q345ii0",
+  "parentID": "mig_cid34f7aen1pqc3l3deg",
+  "checksum": "1:f3a6edfaf9eb3798457648e5df44ecd38989204de5cfa4046c729dd9c566efd2",
+  "operations": [
+    {
+      "addColumn": {
+        "column": {
+          "name": "RoleID",
+          "type": "string"
+        },
+        "table": "roles"
+      }
+    }
+  ]
+}

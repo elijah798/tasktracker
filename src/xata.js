@@ -16,6 +16,7 @@ const tables = [
       { name: "Project", type: "link", link: { table: "projects" } },
       { name: "DueDate", type: "datetime" },
       { name: "project_id", type: "link", link: { table: "projects" } },
+      { name: "Title", type: "string" },
     ],
   },
   {
@@ -25,6 +26,7 @@ const tables = [
       { name: "Project_Description", type: "string" },
       { name: "Created_Date", type: "datetime" },
       { name: "Last_Updated", type: "datetime" },
+      { name: "Team", type: "link", link: { table: "nextauth_users" } },
     ],
   },
   {
@@ -34,6 +36,7 @@ const tables = [
       { name: "emailVerified", type: "datetime" },
       { name: "name", type: "string" },
       { name: "image", type: "string" },
+      { name: "Role", type: "string", defaultValue: "Guest" },
     ],
   },
   {
@@ -80,6 +83,16 @@ const tables = [
       { name: "sessionToken", type: "string" },
       { name: "expires", type: "datetime" },
       { name: "user", type: "link", link: { table: "nextauth_users" } },
+    ],
+  },
+  {
+    name: "roles",
+    columns: [
+      { name: "read", type: "int", defaultValue: "0" },
+      { name: "write", type: "int", defaultValue: "0" },
+      { name: "delete", type: "int" },
+      { name: "edit", type: "int", defaultValue: "0" },
+      { name: "RoleID", type: "string" },
     ],
   },
 ];

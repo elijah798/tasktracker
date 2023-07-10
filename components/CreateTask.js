@@ -1,9 +1,5 @@
 import styles from "../styles/Home.module.css";
-import Modal from "@mui/material/Modal";
-import Button from "@mui/material/Button";
-import Box from "@mui/material/Box";
-import Paper from "@mui/material/Paper";
-import Typography from "@mui/material/Typography";
+
 import { useState } from "react";
 
 function CreateTask() {
@@ -48,9 +44,9 @@ function CreateTask() {
 
     return (
         <>
-            <Button onClick={handleOpen}>Create Task</Button>
+            <button onClick={handleOpen}>Create Task</button>
 
-            <Modal
+            {/* <Modal
                 open={open}
                 onClose={handleClose}
                 aria-labelledby="modal-modal-title"
@@ -112,7 +108,7 @@ function CreateTask() {
 
                 </Paper>
 
-            </Modal>
+            </Modal> */}
 
             {/* <Modal open={show} onClose={handleClose}>
                 <Box sx={{

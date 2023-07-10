@@ -23,12 +23,15 @@ export default async function handler(req, res) {
             console.log("Updating Task")
             req.body.Last_Updated = new Date();           
             const updatedTask = await xata.db.tasks.update(req.body.id, req.body);
+            console.log('Updated Task: ' + req.body.id)
             res.status(200).json(req.body);
             break;
         case "DELETE":
-            console.log("Deleting Task")
+            console.log("Deleting Task: " + req.body.id)
             const deletedTask = await xata.db.tasks.delete(req.body.id);
-            res.redirect(200,"/dashboard");
+            console.log('Deleted Task: ' + req.body.id)
+
+            res.redirect(200,"/tasks");
             break;
         default:
             res.status(405).end();

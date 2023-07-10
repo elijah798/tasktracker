@@ -1,0 +1,12 @@
+{
+  "id": "mig_cid3228j4fk63q345if0",
+  "parentID": "mig_ciceq0juv4sg2jb6k760",
+  "checksum": "1:cc52bf810059c42ebf4082845091bc1f6f3cf66a2cd9c86de1e12a6220494ad8",
+  "operations": [
+    {
+      "addTable": {
+        "table": "roles"
+      }
+    }
+  ]
+}

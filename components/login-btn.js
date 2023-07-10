@@ -2,13 +2,10 @@ import {useSession, signIn, signOut} from 'next-auth/react'
 import styles from '../styles/Home.module.css'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { faCaretDown } from '@fortawesome/free-solid-svg-icons'
+import {Button} from 'antd';
+import { Dropdown, Space } from 'antd';
+import { Avatar } from 'antd';
 import Image from 'next/image'
-import { Menu } from '@mui/base';
-import { MenuItem } from '@mui/material';
-import { Button } from '@mui/material';
-import { Avatar } from '@mui/material';
-import { Paper } from '@mui/material';
-import { Divider } from '@mui/material';
 import React from 'react';
 
 
@@ -16,12 +13,32 @@ export default function Component() {
 
     const [anchorEl, setAnchorEl] = React.useState(null);
     const open = Boolean(anchorEl);
-    const handleClick = (event) => {
-        setAnchorEl(event.currentTarget);
-        };
-    const handleClose = () => {
-        setAnchorEl(null);
-        };
+
+
+    const items = [
+        {
+          key: '1',
+          label: (
+            <Button type='text'>Account</Button>
+          ),
+        },
+        {
+            key: '2',
+            label: (
+                <Button type='text'>Settings</Button>
+                ),
+        },
+        {
+            key: '3',
+            label: (
+                <Button type='text' onClick={() => signOut()}>Sign Out</Button>
+                ),
+        }
+
+
+    ]
+
+
 
 
     const {data: session } = useSession()
@@ -29,35 +46,25 @@ export default function Component() {
         return (
             <>
 
+                
+
+                <Dropdown
+                 menu={{
+                    items,
+                  }}
+                >
                 <Button
-                    id="acc-button"
-                    aria-controls={open ? 'acc-menu' : undefined}
-                    aria-haspopup="true"
-                    aria-expanded={open ? 'true' : undefined}
-                    onClick={open ? handleClose : handleClick}
-                    >
-                <div className={styles.imgcontainer}>
-                    <Avatar sx={{width: 32, height: 32}}>  <Image fill="true" src={session.user.image} alt="profile picture" /> </Avatar>
-                </div>
+                   type='text'>
+                    <Space size='large'>
+                        <FontAwesomeIcon color='white' icon={faCaretDown} />
+                        <Avatar size='small' icon={<Image fill="true" src={session.user.image} alt="profile picture" />} >   </Avatar>
+                    </Space>
+                   
                 </Button>
 
-                <Menu
-                    id="acc-menu"
-                    anchorEl={anchorEl}
-                    open={open}
-                    onClose={handleClose}
-                    MenuListProps={{
-                        'aria-labelledby': 'acc-button',
-                    }}
-                    >
-                        <Paper elevation={24}>
-                        <MenuItem onClick={handleClose}>Account</MenuItem>
-                        <MenuItem onClick={handleClose}>Settings</MenuItem>
-                        <Divider/>
-                        <MenuItem onClick={() => signOut()}>Sign Out</MenuItem>
-                        </Paper>
+                </Dropdown>
+                    
 
-                </Menu>
 
             </>
 
@@ -65,7 +72,7 @@ export default function Component() {
     } else {
         return (
             <>
-            <Button onClick={() => signIn()}>Sign in</Button>
+            <Button type='primary' onClick={() => signIn()}>Sign in</Button>
             
             </>
         )

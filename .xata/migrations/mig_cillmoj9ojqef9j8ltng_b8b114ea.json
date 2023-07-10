@@ -1,0 +1,17 @@
+{
+  "id": "mig_cillmoj9ojqef9j8ltng",
+  "parentID": "mig_cillmi34b79593jukli0",
+  "checksum": "1:b8b114ea753764a96cfe37051a6bd082b9d14260144b1cf372e003333222e99c",
+  "operations": [
+    {
+      "addColumn": {
+        "column": {
+          "name": "Role",
+          "type": "string",
+          "defaultValue": "Guest"
+        },
+        "table": "nextauth_users"
+      }
+    }
+  ]
+}
