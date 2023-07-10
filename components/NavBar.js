@@ -25,7 +25,7 @@ export default function NavBar({projects}) {
         setAnchorEl(null);
         };
 
-        console.log({projects})
+   
 
 
        

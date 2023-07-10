@@ -4,8 +4,13 @@ import { useState } from 'react';
 import styles from '../../styles/Home.module.css'
 import { getXataClient } from '../../src/xata'
 import Link from 'next/link';
-import { Space } from 'antd';
+import { Space, Select } from 'antd';
 import NavBar from '../../components/NavBar';
+
+import { Input, Button } from 'antd';
+import { Col, Row, Divider } from 'antd';
+
+const { TextArea } = Input;
 
 import {useSession} from 'next-auth/react';
 
@@ -73,15 +78,30 @@ export default function task({task}){
 
     }
 
+    const handleStatusChange = (value) => {
+        console.log("Status Changed to " + value.value)
+        task.Status = value.value;
+    }
+
+    const handlepriorityChange = (value) => {
+        console.log("Priority Changed to " + value.value)
+        task.Priority = value.value;
+        console.log(task.priority)
+    }
+
+
 
     const handleSave = () => {
-        if(!active){
+ 
             console.log("saving")
-            setActive(!active)
-            setButton("Edit")
-            task.Status = document.getElementById("statusSelect").value;
-            task.Priority = document.getElementById("prioritySelect").value;
-    
+
+            // setActive(!active)
+            // setButton("Edit")
+            task.Description = document.getElementById('description').value;
+            console.log("changing priority to: " + task.Priority);
+            task.Last_Updated = new Date();
+
+            console.log(task)
         
                 fetch(`http://localhost:3000/api/tasks`, {
                     method: 'PUT',
@@ -90,8 +110,6 @@ export default function task({task}){
                     },
                     body: JSON.stringify(task)
                 })
-    
-        }
 
 }
 
@@ -100,16 +118,118 @@ export default function task({task}){
     return(
         <>
         <NavBar />
-        <Space key={task.id}>
-            
+        <Space key={task.id} style={
+            {
+            display: 'flex',
+            flexDirection: 'column',
+            alignItems: 'center',
+            justifyContent: 'center',
 
-                {session ? ( 
-                <div className={styles.links}>
-                    <button onClick={handleEdit} >{button}</button>
-                    <button onClick={handleSave} >Save</button>
-                    <button onClick={handleDelete} >Delete</button>
-                </div>) : (
-                    <p>Please Login</p>)}
+            padding: '10px',
+            margin: '20px 60px',
+            borderRadius: '5px',
+            boxShadow: '3px 3px 3px 3px grey',
+            backgroundColor: 'white',
+            color: 'black',
+            fontSize: '20px',
+            fontWeight: 'bold',
+            fontFamily: 'Arial'
+            }
+
+        }>
+            <Row>
+                <Col span={24}>
+                    <h1>Title: {task.Title}</h1>
+                </Col>
+            </Row>
+            <Row>
+            <Col span={12}>
+                    <h2>Status:  
+                         <span>
+                        <Select labelInValue
+                        onChange={handleStatusChange}
+                        options={
+                            [
+                                {label: 'Open', value: 'Open'},
+                                {label: 'In Progress', value: 'In Progress'},
+                                {label: 'Completed', value: 'Completed'},
+                                {label: 'Closed', value: 'Closed'}
+                            ]
+                        }
+                        defaultValue={task.Status}
+                        >
+
+                        </Select>
+                        </span></h2>
+                </Col>
+                <Col span={12}>
+                    <h2>Due Date: {date}</h2>
+                </Col>
+                <Col span={12}>
+                    <h2>Priority: <span>
+                        <Select labelInValue  
+                        onChange={handlepriorityChange}
+                        options={
+                            [
+                                {label: 'Low', value: 'Low'},
+                                {label: 'Medium', value: 'Medium'},
+                                {label: 'High', value: 'High'},
+                                {label: 'Urgent', value: 'Urgent'}
+                            ]
+                        }
+                        defaultValue={task.Priority}
+                        >
+                        </Select>
+                        </span></h2>
+                </Col>
+            </Row>
+            <Row style={
+                {
+                    width: '60vw',
+                    resize: 'none',
+                    fontSize: '15px',
+                    fontWeight: 'normal',
+                    fontFamily: 'Arial',
+                    color: 'black',
+                    backgroundColor: 'white',
+                    border: 'none',
+                    borderRadius: '5px',
+                    padding: '10px',
+                    margin: '10px 0px'
+                }
+
+            }>
+                <Col span={24}>
+                    <h2>Description: </h2>
+                    <TextArea id='description' style={
+                        {
+                            width: '100%',
+                            resize: 'none',
+                            fontSize: '15px',
+                            fontWeight: 'normal',
+                            fontFamily: 'Arial',
+                            color: 'black',
+                            backgroundColor: 'white',
+                            borderRadius: '5px',
+                            padding: '10px',
+                            margin: '10px 0px'
+                        }
+
+                    } rows={6} defaultValue={task.Description} />
+                </Col>
+            </Row>
+
+            <Row>
+                <Space style={
+                    {
+                        justifyContent: 'space-between',
+                    }
+                }>
+                    <Button onClick={handleSave}>Save</Button>
+                    <Button onClick={handleDelete}>Delete</Button>
+                    <Button>Cancel</Button>
+                </Space>
+            </Row>
 
         </Space>
 

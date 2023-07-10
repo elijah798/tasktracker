@@ -36,6 +36,7 @@ const tables = [
       { name: "emailVerified", type: "datetime" },
       { name: "name", type: "string" },
       { name: "image", type: "string" },
+      { name: "Role", type: "string", defaultValue: "Guest" },
     ],
   },
   {
@@ -82,6 +83,16 @@ const tables = [
       { name: "sessionToken", type: "string" },
       { name: "expires", type: "datetime" },
       { name: "user", type: "link", link: { table: "nextauth_users" } },
+    ],
+  },
+  {
+    name: "roles",
+    columns: [
+      { name: "read", type: "int", defaultValue: "0" },
+      { name: "write", type: "int", defaultValue: "0" },
+      { name: "delete", type: "int" },
+      { name: "edit", type: "int", defaultValue: "0" },
+      { name: "RoleID", type: "string" },
     ],
   },
 ];

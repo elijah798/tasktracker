@@ -19,13 +19,13 @@ export default function Component() {
         {
           key: '1',
           label: (
-            <Button type='text' onClick={console.log('Account')}>Account</Button>
+            <Button type='text'>Account</Button>
           ),
         },
         {
             key: '2',
             label: (
-                <Button type='text' onClick={console.log('Settings')}>Settings</Button>
+                <Button type='text'>Settings</Button>
                 ),
         },
         {

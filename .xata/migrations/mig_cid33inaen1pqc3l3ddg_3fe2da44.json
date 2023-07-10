@@ -1,0 +1,17 @@
+{
+  "id": "mig_cid33inaen1pqc3l3ddg",
+  "parentID": "mig_cid3228j4fk63q345if0",
+  "checksum": "1:3fe2da44e53018314381d4673dd3fb586b9360c9108eb6d3f9aa444330891bb8",
+  "operations": [
+    {
+      "addColumn": {
+        "column": {
+          "name": "Read",
+          "type": "int",
+          "defaultValue": "0"
+        },
+        "table": "roles"
+      }
+    }
+  ]
+}

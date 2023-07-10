@@ -32,24 +32,15 @@ export default function tasks({tasks, projects}){
 
     const Router = useRouter();
 
-    const handleDelete = (id) => {
-        console.log(id)
-        // run api call to delete task
-        fetch('/api/tasks', {
-            method: 'DELETE',
-            headers: {
-                'Content-Type': 'application/json'
-            },
-            body: JSON.stringify({
-                id: id,
-        })
-        })
+    const refreshData = () => {
+        Router.replace(Router.asPath);
     }
 
     const opentask = (id) => {
         Router.push(`/task/${id}`);
     }
 
+ 
       
 
     const {data: session } = useSession()
@@ -66,7 +57,7 @@ export default function tasks({tasks, projects}){
 
         },
         {
-            title: 'Task Name',
+            title: 'Task Description',
             dataIndex: 'Description',
             key: 'Description',
 
@@ -103,7 +94,7 @@ export default function tasks({tasks, projects}){
 
                 <Table style={
                     {
-                        cursor: 'pointer'
+                        cursor: 'pointer',
                     }
                 } onRow={(record, rowIndex) => {
     return {

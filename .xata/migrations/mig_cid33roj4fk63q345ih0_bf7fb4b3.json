@@ -1,0 +1,16 @@
+{
+  "id": "mig_cid33roj4fk63q345ih0",
+  "parentID": "mig_cid33n8j4fk63q345ig0",
+  "checksum": "1:bf7fb4b3dde8ad49981bc9471e001abaf00378385c3b37bff0f4165c1263cec5",
+  "operations": [
+    {
+      "addColumn": {
+        "column": {
+          "name": "delete",
+          "type": "int"
+        },
+        "table": "roles"
+      }
+    }
+  ]
+}

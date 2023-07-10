@@ -1,0 +1,17 @@
+{
+  "id": "mig_cid34f7aen1pqc3l3deg",
+  "parentID": "mig_cid33roj4fk63q345ih0",
+  "checksum": "1:74a0a1765f31f0bf30e5c53ddbe05c2b7e86c56e4628d005b745d7959deeb8f1",
+  "operations": [
+    {
+      "addColumn": {
+        "column": {
+          "name": "edit",
+          "type": "int",
+          "defaultValue": "0"
+        },
+        "table": "roles"
+      }
+    }
+  ]
+}

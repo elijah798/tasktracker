@@ -23,6 +23,7 @@ export default async function handler(req, res) {
             console.log("Updating Task")
             req.body.Last_Updated = new Date();           
             const updatedTask = await xata.db.tasks.update(req.body.id, req.body);
+            console.log('Updated Task: ' + req.body.id)
             res.status(200).json(req.body);
             break;
         case "DELETE":
