@@ -2,7 +2,7 @@ import Head from 'next/head'
 import Image from 'next/image'
 import styles from '../styles/Home.module.css'
 import { Button } from 'react-bootstrap'
-import LoginButton from '../components/login-btn'
+import LoginButton from '../components/login-btn2'
 import { SessionProvider } from 'next-auth/react'
 
 

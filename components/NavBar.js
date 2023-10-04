@@ -46,7 +46,7 @@ export default function NavBar({projects}) {
         >
             <div className={styles.navbarcontainer}>
                 <div className={styles.projectselector}>
-                    <h1 className={styles.subtitle}>Ject.io: Development</h1>
+                    <Link href={'/'}><h1 className={styles.subtitle}>Ject.io: Development</h1></Link>
                 </div>
 
                 <div className={styles.navlinks}>

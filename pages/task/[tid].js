@@ -96,32 +96,37 @@ export default function task({task}){
 
     const handleSave = () => {
  
-            console.log("saving")
+        console.log("saving")
 
-            // setActive(!active)
-            // setButton("Edit")
-            task.Description = document.getElementById('description').value;
-            console.log("changing priority to: " + task.Priority);
-            task.Last_Updated = new Date();
+        // setActive(!active)
+        // setButton("Edit")
+        task.Description = document.getElementById('description').value;
+        console.log("changing priority to: " + task.Priority);
+        task.Last_Updated = new Date();
 
-            console.log(task)
-        
-                fetch(`http://localhost:3000/api/tasks`, {
-                    method: 'PUT',
-                    headers: {
-                        'Content-Type': 'application/json'
-                    },
-                    body: JSON.stringify(task)
-                }).then(router.push('/tasks/'))
+        console.log(task)
+    
+            fetch(`http://localhost:3000/api/tasks`, {
+                method: 'PUT',
+                headers: {
+                    'Content-Type': 'application/json'
+                },
+                body: JSON.stringify(task)
+            }).then(router.push('/tasks/'))
             
 
-}
+    }
 
     const date = new Date(task.DueDate).toLocaleDateString();
- 
+    
+
+     
     return(
         <>
+        
         <NavBar />
+        {session ?  
+        <>
         <Space key={task.id} style={
             {
             display: 'flex',
@@ -236,7 +241,8 @@ export default function task({task}){
             </Row>
 
         </Space>
-
+        </>
+        : <h1>Not Signed in</h1>}
         </>
         
 

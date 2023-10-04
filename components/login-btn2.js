@@ -46,25 +46,7 @@ export default function Component() {
         return (
             <>
 
-                
-
-                <Dropdown
-                 menu={{
-                    items,
-                  }}
-                >
-                <Button
-                   type='text'>
-                    <Space size='large'>
-                        <FontAwesomeIcon color='white' icon={faCaretDown} />
-                        <Avatar size='large' icon={<Image fill="true" src={session.user.image} alt="profile picture" />} >   </Avatar>
-                    </Space>
-                   
-                </Button>
-
-                </Dropdown>
-                    
-
+                <Button href="/tasks">Go to tasks</Button>
 
             </>
 
