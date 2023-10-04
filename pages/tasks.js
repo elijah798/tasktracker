@@ -3,7 +3,7 @@ import TaskList from "../components/TaskList";
 import styles from "../styles/Home.module.css";
 import NavBar from "../components/NavBar";
 import { Affix, Select } from "antd";
-import { Button, Space, Table, Modal, Input, DatePicker } from 'antd';
+import { Button, Space, Table, Modal, Input, DatePicker, Form } from 'antd';
 import { PlusOutlined } from '@ant-design/icons';
 import {useSession, signIn, signOut} from 'next-auth/react'
 import { getXataClient } from "../src/xata";
@@ -11,14 +11,34 @@ import { FloatButton } from 'antd';
 import { handleClientScriptLoad } from "next/script";
 import { useRouter } from "next/router";
 import { useState } from "react";
+import { authOptions } from "./api/auth/[...nextauth]";
+import { getServerSession } from "next-auth/next";
+
 import task from "./task/[tid]";
+import { useEffect } from "react";
+
+
+
 
 const { TextArea } = Input;
 
 const xata = getXataClient();
 
 export async function getServerSideProps(context) {
-    const tasks = await xata.db.tasks.getAll();
+    const session = await getServerSession(context.req,context.res, authOptions);
+
+
+    if(!session){
+        return {
+            redirect: {
+                destination: '/',
+                permanent: false
+            }
+        }
+    }
+   
+
+    const tasks = await xata.db.tasks.filter({Owner: session.user.email}).getAll();
     const projects = await xata.db.projects.getAll();
     const user = await xata.db.nextauth_users.getFirst({email: context.req.cookies.email});
 
@@ -34,6 +54,8 @@ export async function getServerSideProps(context) {
 }
 
 export default function tasks({tasks, projects, user}){
+
+
 
     const Router = useRouter();
 
@@ -52,6 +74,7 @@ export default function tasks({tasks, projects, user}){
         const [priority, setPriority] = useState("Low");
         const [status, setStatus] = useState("Open");
         const [project, setProject] = useState("rec_cgn07s92s80sdvggntag");
+        const [Owner, setOwner] = useState(user.email);
     
 
     const refreshData = () => {
@@ -71,6 +94,7 @@ export default function tasks({tasks, projects, user}){
             Project: "rec_cgn07s92s80sdvggntag",
             Date_Created: new Date(),
             Last_Updated: new Date(),
+            Owner: Owner
         }
 
         if(user.Role == "admin"){
@@ -100,11 +124,14 @@ export default function tasks({tasks, projects, user}){
 
     const {data: session } = useSession()
 
+
+
     tasks.forEach((task) => {
         task.DueDate = new Date(task.DueDate).toLocaleDateString();
     })
 
     const taskcolumns = [
+
         {
             title: 'id',
             dataIndex: 'id',
@@ -122,18 +149,21 @@ export default function tasks({tasks, projects, user}){
             title: 'Due Date',
             dataIndex: 'DueDate',
             key: 'DueDate',
+            responsive: ['sm'],
 
         },
         {
             title: 'Priority',
             dataIndex: 'Priority',
             key: 'Priority',
+            responsive: ['md'],
 
         },
         {
             title: 'Status',
             dataIndex: 'Status',
             key: 'Status',
+            responsive: ['lg'],
 
         },
     ]
@@ -158,31 +188,61 @@ export default function tasks({tasks, projects, user}){
     };
   }} dataSource={tasks} columns={taskcolumns} />
                 <FloatButton type="primary" open={() => {}} onClick={showModal} shape="circle" size="large" icon={<PlusOutlined />}/>
-                <Modal title="Create Task" open={modal} onOk={handleOk} onCancel={handleCancel}>
-                    <Space direction="vertical"
+                <Modal className="mx-auto" title="Create Task" open={modal} onOk={handleOk} onCancel={handleCancel}>
+                    <Form
+                        type="flex"
+                        direction="vertical"
+                        align="middle"
                         size="small"
                         justify="center"   
                     >
-                    <label>Task Title</label>
-                    <Input placeholder="Task Title" onChange={(event) => {setTitle(event.target.value)}}></Input>
-                    <label>Task Description</label>
-                    <TextArea rows={6} placeholder="Task Description" onChange={(event) => {setDescription(event.target.value)}}></TextArea>
-                    <label>Due Date</label>
-                    <DatePicker onChange={(event) => {setDueDate(event)}}></DatePicker>
-                    <label>Status</label>
-                    <Select defaultValue="Open" onChange={(event) => {setStatus(event)}} style={{ width: 120 }}>
-                        <Select.Option value="Open">Open</Select.Option>
-                        <Select.Option value="In Progress">In Progress</Select.Option>
-                        <Select.Option value="Completed">Completed</Select.Option>
-                        <Select.Option value="Closed">Closed</Select.Option>
-                    </Select>
-                    <label>Priority</label>
-                    <Select defaultValue="Low" onChange={(event) => {setPriority(event)}} style={{ width: 120 }}>
-                        <Select.Option value="Low">Low</Select.Option>
-                        <Select.Option value="Medium">Medium</Select.Option>
-                        <Select.Option value="High">High</Select.Option>
-                    </Select>
-                    </Space>
+                    
+                        <Form.Item
+                            label="Task Title"
+                        >
+                            <Input placeholder="Task Title" onChange={(event) => {setTitle(event.target.value)}}></Input>
+                        </Form.Item>
+
+                        <Form.Item
+                            label="Task Description"
+                        >
+                            <TextArea rows={6} placeholder="Task Description" onChange={(event) => {setDescription(event.target.value)}}></TextArea>
+                        </Form.Item>
+
+                        <Form.Item
+                            label="Due Date"
+                        >
+                            <DatePicker size={"large"} onChange={(event) => {setDueDate(event)}}></DatePicker>
+                        </Form.Item>
+
+                        <Form.Item
+                            label="Status"
+                        >
+                            {/* <label>Status</label> */}
+                            <Select defaultValue="Open" onChange={(event) => {setStatus(event)}} >
+                                <Select.Option value="Open">Open</Select.Option>
+                                <Select.Option value="In Progress">In Progress</Select.Option>
+                                <Select.Option value="Completed">Completed</Select.Option>
+                                <Select.Option value="Closed">Closed</Select.Option>
+                            </Select>
+                        </Form.Item>
+
+                        <Form.Item
+                            label="Priority"
+                        >
+                            <Select defaultValue="Low" onChange={(event) => {setPriority(event)}} >
+                                <Select.Option value="Low">Low</Select.Option>
+                                <Select.Option value="Medium">Medium</Select.Option>
+                                <Select.Option value="High">High</Select.Option>
+                            </Select>
+                        </Form.Item>
+
+                        <Form.Item
+                            label="Owner"
+                        >
+                            <Input disabled value={session.user.email}></Input>
+                        </Form.Item>
+                    </Form>
                 </Modal>
 
 

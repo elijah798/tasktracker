@@ -52,7 +52,7 @@
 .subtitle {
   margin: 0;
   line-height: 1.15;
-  font-size: 3rem;
+  font-size: 3vh;
 
 }
 
@@ -332,4 +332,8 @@
   .logo img {
     filter: invert(1);
   }
+}
+.ant-table.ant-table-rt1 
+{
+  overflow-x: scroll;
 }

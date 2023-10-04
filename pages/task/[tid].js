@@ -6,6 +6,7 @@ import { getXataClient } from '../../src/xata'
 import Link from 'next/link';
 import { Space, Select } from 'antd';
 import NavBar from '../../components/NavBar';
+import {redirect} from 'next/navigation'
 
 import { Input, Button } from 'antd';
 import { Col, Row, Divider } from 'antd';
@@ -73,9 +74,11 @@ export default function task({task}){
             },
             body: JSON.stringify(task)
         })
+        router.push('/tasks/')
+    }
 
-        router.push('/Dashboard/')
-
+    const handleCancel = () => {
+        router.push('/tasks/')
     }
 
     const handleStatusChange = (value) => {
@@ -109,7 +112,8 @@ export default function task({task}){
                         'Content-Type': 'application/json'
                     },
                     body: JSON.stringify(task)
-                })
+                }).then(router.push('/tasks/'))
+            
 
 }
 
@@ -143,7 +147,7 @@ export default function task({task}){
                 </Col>
             </Row>
             <Row>
-            <Col span={12}>
+            <Col span={24}>
                     <h2>Status:  
                          <span>
                         <Select labelInValue
@@ -227,7 +231,7 @@ export default function task({task}){
                 }>
                     <Button onClick={handleSave}>Save</Button>
                     <Button onClick={handleDelete}>Delete</Button>
-                    <Button>Cancel</Button>
+                    <Button onClick={handleCancel}>Cancel</Button>
                 </Space>
             </Row>
 
