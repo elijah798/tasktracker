@@ -27,7 +27,7 @@ export default function Home() {
         <h1 className={styles.title}>
           Welcome to <a href="#">Ject.io</a>
         </h1>
-        <p className={styles.description}>{"The last project management software you'll ever need."}</p>
+        <p className={styles.description}>{"A Task tracking app built with NextJS and Xata.io"}</p>
         {/* <a href='/Dashboard'> */}
         <div className={styles.LoginButton}>
           <LoginButton />
